@@ -14,3 +14,9 @@ class SaleOrder(models.Model):
     
     student_ids = fields.Many2many(string='Students',
                                    related='session_id.student_ids')
+    
+    cancel_reason = fields.Selection([('no_need', 'Do not need it anymore'),
+                                      ('no_money', 'Not enough funds'),
+                                      ('save_for_later', 'Saved for later')])
+    
+    cancel_explanation = fields.Text(help='A longer explanation of why the order was confirmed.')

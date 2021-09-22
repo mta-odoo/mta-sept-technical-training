@@ -8,11 +8,13 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='payment_term_id']" position="after">
                     <field name="session_id"/>
+                    <field name="cancel_reason"/>
+                    <field name="cancel_explanation"/>
                 </xpath>
-                
-                <field name="partner_id" position="before">
+                <field name="note" position="before">
                     <field name="instructor_id" attrs="{'invisible':[('session_id','=', False)]}"/>
                 </field>
+
                 
                 <xpath expr="//sheet//notebook" position="inside">
                     <page string="Students" attrs="{'invisible':[('session_id', '=', False)]}">

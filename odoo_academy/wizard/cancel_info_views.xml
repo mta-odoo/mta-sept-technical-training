@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="cancel_info_wizard_form_view">
+            <field name="name">cancel.info.wizard.form</field>
+            <field name="model">cancel.info.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Why are you canceling this order?">
+                    <group>
+                        <field name="sale_id"/>
+                        <field name="cancel_reason"/>
+                        <field name="cancel_explanation"/>    
+                    </group>
+                    <footer>
+                        <button name="record_cancel_reason" type="object"
+                                string="Save" class="oe_highlight"/>
+                        or
+                        <button special="cancel" string="Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record id="launch_cancel_info_wizard" model="ir.actions.act_window">
+            <field name="name">Cancel Info Wizard</field>
+            <field name="res_model">cancel.info.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_wizard_order_form_inherit_academy">
+            <field name="name">sale.order.form.wizard.inherit.academy</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <button name="action_cancel" position="replace">
+                    <button name="%(launch_cancel_info_wizard)d" type="action" string="Cancel" attrs="{'invisible': ['|', ('state', 'not in', ['draft', 'sent','sale']), ('id', '=', False)]}"/>
+                </button>
+            </field>
+        </record>   
+    </data>
+</odoo>
