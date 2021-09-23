@@ -64,6 +64,32 @@
                                 </t>
                             </tbody>
                         </table>
+                        <h4>Sale Products</h4>
+                        <table class="table table-sm o_main_table">
+                            <thead>
+                                <tr>
+                                    <th name="th_product">Name</th>
+                                    <th name="th_price">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="products" t-as="product">
+                                    <tr>
+                                        <td name="td_name">
+                                            <t t-if="product.name">
+                                                <span t-field="product.name"/>
+                                            </t>
+                                        </td>
+                                        <td name="td_list_price">
+                                            <t t-if="product.list_price">
+                                                <span t-field="product.list_price"/>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+
                     </div>
                 </t>
             </t>
