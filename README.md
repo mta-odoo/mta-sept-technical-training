@@ -1,1 +1,1 @@
-# mta-sept-technical-training
+# online_technical_training
